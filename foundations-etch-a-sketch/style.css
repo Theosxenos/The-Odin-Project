@@ -6,7 +6,8 @@ body
 .container
 {
     /* max-width: 1024px; */
-    max-width: 1041px;
+    height: 500px;
+    max-width: 960px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -18,8 +19,13 @@ body
 {
     background-color: black;
     color: white;
-    width: 64px;
-    height: 64px;
+    width: 60px;
+    height: 60px;
     text-align: center;
-    border: 1px solid #333;
+    /* border: 1px solid #333; */
+}
+
+.grid-item-hover
+{
+    background-color: #999;
 }
