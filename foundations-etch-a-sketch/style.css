@@ -1,0 +1,25 @@
+body
+{
+    margin: 0;
+}
+
+.container
+{
+    /* max-width: 1024px; */
+    max-width: 1041px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.grid-item
+{
+    background-color: black;
+    color: white;
+    width: 64px;
+    height: 64px;
+    text-align: center;
+    border: 1px solid #333;
+}
