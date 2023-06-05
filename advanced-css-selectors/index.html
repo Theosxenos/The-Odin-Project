@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a :last-child {
+            background-color: blanchedalmond;
+        }
+        .a > div ~ div {
+            background-color: red;
+        }
+        div {
+            height: 100px;
+            width: 100px;
+        }
+        .b {
+            height: 200px;
+            /* border: solid 1px black; */
+            border: 1px;
+        }
+        .a, .b {
+            background-color: #333;
+        }
+        div > div + div {
+            background-color: #666;
+        }
+        .a + div + div {
+            background-color: rebeccapurple;
+        }
+        .ignore-react-onclickoutside {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="a">
+        <div></div>
+        <div></div>
+    </div>
+    <!-- <div class="b"></div>
+    <div class="c"></div>
+    <div class="d"></div> -->
+</body>
+</html>
