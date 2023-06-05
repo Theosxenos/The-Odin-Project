@@ -57,7 +57,10 @@ body {
 .form input {
     border: 1px solid #E5E7EB;
     border-radius: 5px;
-    /* width: ; */
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: 5px;
+    width: 75%;
 }
 .form input:invalid {
     border-color: red;
@@ -70,8 +73,15 @@ body {
 
 .bottom > button {
     background-color: var(--colour-odin-green);
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 1rem 2rem;
 }
 
 .bottom a {
     color: var(--colour-odin-green);
+    font-weight: bold;
+    
 }
