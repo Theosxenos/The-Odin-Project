@@ -1,0 +1,77 @@
+:root {
+    --colour-odin-green: #596D48;
+}
+
+body {
+    margin: 0rem;
+    padding: 0rem;
+}
+
+@font-face {
+    font-family: 'Norse';
+    src: url("assets/Norse-Bold.otf") format('truetype');
+}
+
+.fs-2 {
+    font-size: 2rem;
+}
+
+.fw-b {
+    font-weight: bold;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+}
+
+.left-column {
+    background-image: url('assets/halie-west-25xggax4bSA-unsplash.jpg');
+    flex: 1;
+}
+
+.right-column {
+    flex:2;
+    padding: 2rem;
+}
+
+.logo-container {
+    background-color: #000000AA;
+    color: white;
+    max-height: 2.5rem;
+    font-family: 'Norse';
+}
+
+.logo {
+    max-height: 2rem;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    /* display: flex;
+    justify-content: space-evenly; */
+}
+
+.form input {
+    border: 1px solid #E5E7EB;
+    border-radius: 5px;
+    /* width: ; */
+}
+.form input:invalid {
+    border-color: red;
+}
+
+.form-left, .form-right {
+    display: grid;
+    grid-template-rows: auto;
+}
+
+.bottom > button {
+    background-color: var(--colour-odin-green);
+}
+
+.bottom a {
+    color: var(--colour-odin-green);
+}
