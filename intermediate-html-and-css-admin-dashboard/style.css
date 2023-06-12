@@ -17,6 +17,39 @@ body {
 .header {
     grid-column-start: 2;
     background-color: #bada55;
+    display: grid;
+    grid-template: 1fr 1fr / 3fr 1fr;
+}
+.header-search {
+    display: flex;
+    padding: 15px;
+    place-items: center;
+
+}
+.header-user {
+    display: grid;
+    grid-auto-flow: column;
+    place-items: center;
+}
+.header-greetings {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 5px;
+}
+
+.searchicon {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+input.search {
+    border-radius: 15px;
+    height: 1rem;
+    width: 100%;
+    border: 0;
+    background-color: #e5e7eb;
+    padding: 10px;
+    font-size: 0.9rem;
 }
 
 .menu {
@@ -39,4 +72,31 @@ body {
 .main-content {
     grid-column-start: 2;
     background-color: #99999945;
+    display: grid;
+    grid-template-columns: 1fr auto;
 }
+
+.projects {
+    display: grid;
+    /* grid-auto-flow: column; */
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.info-right {
+    background-color: #b00b15;
+}
+
+.card {
+    background-color: white;
+    width: 15rem;
+    border-radius: 15px;
+}
+.card p {
+    text-overflow: clip;
+}
+
+.announcements p {
+    text-overflow: clip;
+}
+
