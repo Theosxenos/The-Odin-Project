@@ -4,3 +4,28 @@ body {
     width: 100vw;
     height: 100vh;
 }
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 12rem auto;
+    grid-template-rows: 12rem 1fr;
+    grid-auto-flow: row;
+}
+
+.header {
+    grid-column-start: 2;
+    background-color: #bada55;
+}
+
+.menu {
+    background-color: #1992d4;
+    grid-column-start: 1;
+    grid-row: 1 / span 2;
+}
+
+.main-content {
+    grid-column-start: 2;
+    background-color: #99999945;
+}
