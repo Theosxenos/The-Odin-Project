@@ -12,14 +12,6 @@ body {
     src: url("assets/Norse-Bold.otf") format('truetype');
 }
 
-.fs-2 {
-    font-size: 2rem;
-}
-
-.fw-b {
-    font-weight: bold;
-}
-
 .container {
     min-height: 100vh;
     display: flex;
@@ -27,33 +19,78 @@ body {
 
 .left-column {
     background-image: url('assets/halie-west-25xggax4bSA-unsplash.jpg');
+    background-size: cover;
     flex: 1;
+    position: relative;
 }
 
 .right-column {
     flex:2;
-    padding: 2rem;
+    /* padding: 2rem; */
+    display: flex;
+    flex-direction: column;
+}
+
+.intro {
+    background: #99999910;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding: 0 2rem;
+}
+.intro p {
+    display: block;
+}
+
+.intro-text {
+    font-size: 2rem;
+    width: max(40rem);
 }
 
 .logo-container {
     background-color: #000000AA;
     color: white;
-    max-height: 2.5rem;
+    max-height: auto;
     font-family: 'Norse';
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 8rem;
+}
+.logo {
+    max-height: 8rem;
+}
+.logo-text {
+    font-size: 6rem;
+    font-weight: bold;
+    margin: auto 0;
 }
 
-.logo {
-    max-height: 2rem;
+.copyright {
+    bottom: 5px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+}
+.copyright > span {
+    color: white;
+    margin: 0 auto;
+    width: 15rem;
+}
+.copyright a {
+    color: white;
 }
 
 .form {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+    flex: 1;
+    margin-left: 2rem;
     /* display: flex;
     justify-content: space-evenly; */
 }
-
 .form input {
     border: 1px solid #E5E7EB;
     border-radius: 5px;
@@ -61,16 +98,26 @@ body {
     line-height: 1.5rem;
     padding: 5px;
     width: 75%;
+    /* max-height: 1.5rem; */
+}
+.form input:focus-visible {
+    outline: 1px solid blue;
 }
 .form input:invalid {
     border-color: red;
 }
 
 .form-left, .form-right {
-    display: grid;
-    grid-template-rows: auto;
+    /* display: grid;
+    grid-template-rows: 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr; */
+    display: flex;
+    flex-direction: column;
 }
 
+.bottom {
+    flex: 1;
+    margin-left: 2rem;
+}
 .bottom > button {
     background-color: var(--colour-odin-green);
     border-radius: 10px;
@@ -79,7 +126,6 @@ body {
     font-weight: bold;
     padding: 1rem 2rem;
 }
-
 .bottom a {
     color: var(--colour-odin-green);
     font-weight: bold;
