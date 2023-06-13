@@ -73,23 +73,31 @@ input.search {
     grid-column-start: 2;
     background-color: #99999945;
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 9fr 3fr;
 }
 
 .projects {
     display: grid;
     /* grid-auto-flow: column; */
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 20px;
+    grid-template-rows: auto;
+    grid-auto-rows: 1fr;
+
+    padding: 15px;
 }
 
 .info-right {
     background-color: #b00b15;
+    display: grid;
+    grid-template-rows: auto;
+    grid-auto-rows: 1fr;
+    gap: 20px;
 }
 
 .card {
     background-color: white;
-    width: 15rem;
+    width: 100%;
     border-radius: 15px;
 }
 .card p {
