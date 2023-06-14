@@ -9,8 +9,8 @@ body {
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-columns: 12rem auto;
-    grid-template-rows: 12rem 1fr;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: auto 4fr;
     grid-auto-flow: row;
 }
 
@@ -34,7 +34,24 @@ body {
 .header-greetings {
     display: grid;
     grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr 1fr;
     gap: 5px;
+}
+
+.header-greetings img {
+    height: 100px;
+    width: 100px;
+    /* justify-self: center; */
+    grid-row: span 2;
+}
+.header-greetings p {
+    margin: 0;
+}
+.header-greetings p:first-of-type {
+    align-self: end;
+}
+.header-greetings p:last-child {
+    font-size: 1.5rem;
 }
 
 .searchicon {
