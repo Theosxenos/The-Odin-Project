@@ -29,12 +29,7 @@ let gameController = (function() {
     };
     
     let changePlayer = () => {
-        if(currentPlayer === player1) {
-            currentPlayer = player2;
-            return;
-        }
-        
-        currentPlayer = player1;
+        currentPlayer = currentPlayer === player1 ? player2 : player1;
     }
 
     // Expose public methods
