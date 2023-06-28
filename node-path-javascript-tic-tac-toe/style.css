@@ -1,0 +1,30 @@
+body {
+    background: #bada55;
+    height: 100vh;
+    margin:0;
+    padding: 0;
+}
+
+.container {
+    background: #9999CF;
+    width: 50%;
+    min-height: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.container h1 {
+    display: inline-block;
+}
+
+.gameboard {
+    background: darkcyan;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+}
+.grid-item {
+    border: 1px solid black; /* Add border to each grid cell */
+    padding: 10px; /* Optional: Add padding to the cell content */
+}
