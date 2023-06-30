@@ -16,7 +16,7 @@ body {
     display: inline-block;
 }
 
-.gameboard {
+.game-board {
     background: darkcyan;
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
