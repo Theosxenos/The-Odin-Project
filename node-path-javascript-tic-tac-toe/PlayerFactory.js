@@ -1,3 +1,3 @@
-function playerFactory(sign) {
-    return { sign };
+function playerFactory(name, sign) {
+    return { name, sign };
 }
