@@ -1,36 +1,34 @@
-let gameController = (function() {
-    let player1 = playerFactory('X');
-    let player2 = playerFactory('O');
-    let currentPlayer = player1;
-
+let uiController = (function() {
+    let turnText = () => `${gameController.getCurrentPlayer().name}'s turn`;
+    
     let cacheDom = function() {
-        this.boardEl = document.querySelector('.gameboard');
-        this.cells = this.boardEl.childNodes;
+        this.boardEl = document.querySelector('.game-board');
+        this.cellEls = this.boardEl.children;
+        this.currentPlayerEl = document.querySelector('#current-player');
     };
 
-    let bindEvents = function() {
-        this.cells.forEach((cell) => {
+    let bindEvents = () => {
+        [...this.cellEls].forEach((cell) => {
             cell.addEventListener('click', (event) => {
                 let cellId = event.target.attributes['data-id'].value;
-                let sign = currentPlayer.sign;
-                let canPlace = gameBoard.setPiece(cellId, sign);
+                let roundResult = gameController.playRound(cellId);
                 
-                if(!canPlace) return;
+                if(!roundResult) return;
                 
-                event.target.textContent = sign;
-                changePlayer();
+                event.target.textContent = gameController.getCurrentPlayer().sign;
+                renderGame();
             });
         });
     };
-
-    let init = function() {
+    
+    let renderGame = () => {
+        this.currentPlayerEl.textContent = turnText();
+    }
+    let init = () => {
         cacheDom();
+        renderGame();
         bindEvents();
     };
-    
-    let changePlayer = () => {
-        currentPlayer = currentPlayer === player1 ? player2 : player1;
-    }
 
     // Expose public methods
     return {
@@ -38,4 +36,4 @@ let gameController = (function() {
     };
 })();
 
-gameController.init();
+uiController.init();
