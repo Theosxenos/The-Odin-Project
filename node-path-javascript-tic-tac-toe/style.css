@@ -20,11 +20,30 @@ body {
     background: darkcyan;
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+
     width: 600px;
     height: 600px;
     margin: 0 auto;
+    grid-gap: 5px;
+    background: #000;
 }
 .grid-item {
-    border: 1px solid black; /* Add border to each grid cell */
-    padding: 10px; /* Optional: Add padding to the cell content */
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.grid-item.x {
+    
+}
+.grid-item.x:hover{
+    
+}
+.grid-item.o {
+    
+}
+.grid-item.o:hover{
+
 }
