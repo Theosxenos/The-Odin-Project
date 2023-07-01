@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
-    <script src="GameBoard.js"></script>
-    <script src="PlayerFactory.js"></script>
+    <script src="PlayerFactory.js" defer></script>
+    <script src="CellFactory.js" defer></script>
+    <script src="GameController.js" defer></script>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Tic-Tac-Toe</h1>
-        <div class="gameboard">
+        <h1 class="game-title">Tic-Tac-Toe</h1>
+        <h2 id="current-player"></h2>
+        <div class="game-board">
             <div class="grid-item" data-id="1"></div>
             <div class="grid-item" data-id="2"></div>
             <div class="grid-item" data-id="3"></div>
