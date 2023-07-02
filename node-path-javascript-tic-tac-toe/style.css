@@ -34,6 +34,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
+    --imgpad: 5px;
 }
 .grid-item.x {
     background-image: url('assets/x.png');
@@ -43,10 +44,10 @@ body {
     content: '';
     display: block;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: var(--imgpad);
+    left: var(--imgpad);
+    right: var(--imgpad);
+    bottom: var(--imgpad);
     background-image: url('assets/x.png');
     background-size: cover;
     opacity: 0.25;
@@ -55,14 +56,14 @@ body {
     background-image: url('assets/o.png');
     background-size: cover;
 }
-.grid-item.player-o:hover::before {
+.grid-item.player-o:not(.o):not(.x):hover::before {
     content: '';
     display: block;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: var(--imgpad);
+    left: var(--imgpad);
+    right: var(--imgpad);
+    bottom: var(--imgpad);
     background-image: url('assets/o.png');
     background-size: cover;
     opacity: 0.25;
