@@ -13,9 +13,12 @@ let uiController = (function() {
                 let cellId = event.target.attributes['data-id'].value;
                 let roundResult = gameController.playRound(cellId);
                 
-                if(!roundResult) return;
+                // TODO - Error message?
+                if(roundResult.wrongMove) return;
+                // TODO - Handle win
+                if(roundResult.hasWon) return;
                 
-                event.target.textContent = gameController.getCurrentPlayer().sign;
+                event.target.textContent = roundResult.roundResult.player;
                 renderGame();
             });
         });
