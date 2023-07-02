@@ -9,7 +9,7 @@ let uiController = (function() {
 
     function handeTurnUi(cell, roundResult) {
         let player = roundResult.roundResult.player;
-        cell.textContent = player;
+        // cell.textContent = player;
         cell.classList.add(player.toLowerCase());
         renderGame();
         

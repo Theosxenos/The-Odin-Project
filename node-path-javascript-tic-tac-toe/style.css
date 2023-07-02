@@ -36,7 +36,8 @@ body {
     position: relative;
 }
 .grid-item.x {
-    
+    background-image: url('assets/x.png');
+    background-size: cover;
 }
 .grid-item.player-x:not(.o):not(.x):hover::before {
     content: '';
@@ -51,7 +52,8 @@ body {
     opacity: 0.25;
 }
 .grid-item.o {
-    
+    background-image: url('assets/o.png');
+    background-size: cover;
 }
 .grid-item.player-o:hover::before {
     content: '';
