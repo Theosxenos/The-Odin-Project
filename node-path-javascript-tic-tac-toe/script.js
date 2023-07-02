@@ -34,17 +34,14 @@ let uiController = (function() {
     let renderGame = () => {
         this.currentPlayerEl.textContent = turnText();
         let cellelements = [...this.cellEls];
-        
-        // if first element doesn't have it rest doesn't either
-        let cellclasses = cellelements[0].classList; 
 
         cellelements.forEach((cell) => {
-            let curclasslist = [...cell.classList];
-            if(curclasslist.some(classlist => classlist.includes('player'))) {
-                let i = curclasslist.findIndex(cl => cl.includes('player'));
-                cell.classList.remove(cell.classList[i]);
-            }
-            
+            cell.classList.forEach((cn) => {
+                if (cn.includes('player')) {
+                    cell.classList.remove(cn);
+                }
+            });
+
             cell.classList.add(`player-${gameController.getCurrentPlayer().symbol.toLowerCase()}`);
         });
     }
