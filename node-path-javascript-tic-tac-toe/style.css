@@ -3,6 +3,7 @@ body {
     height: 100vh;
     margin:0;
     padding: 0;
+    font-family: sans-serif;
 }
 
 .container {
@@ -17,10 +18,8 @@ body {
 }
 
 .game-board {
-    background: darkcyan;
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-
     width: 600px;
     height: 600px;
     margin: 0 auto;
@@ -28,43 +27,47 @@ body {
     background: #000;
 }
 .grid-item {
+    --imgpad: 5px;
+    
     background-color: white;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    --imgpad: 5px;
 }
-.grid-item.x {
+.grid-item.x::before, .grid-item.o::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: var(--imgpad);
+    left: var(--imgpad);
+    right: var(--imgpad);
+    bottom: var(--imgpad);
+}
+.grid-item.x::before {
     background-image: url('assets/x.png');
     background-size: cover;
+}
+.grid-item.o::before {
+    background-image: url('assets/o.png');
+    background-size: cover;
+}
+
+.grid-item.player-x:not(.o):not(.x):hover::before, .grid-item.player-o:not(.o):not(.x):hover::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: var(--imgpad);
+    left: var(--imgpad);
+    right: var(--imgpad);
+    bottom: var(--imgpad);
+    background-size: cover;
+    opacity: 0.25;
 }
 .grid-item.player-x:not(.o):not(.x):hover::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: var(--imgpad);
-    left: var(--imgpad);
-    right: var(--imgpad);
-    bottom: var(--imgpad);
     background-image: url('assets/x.png');
-    background-size: cover;
-    opacity: 0.25;
-}
-.grid-item.o {
-    background-image: url('assets/o.png');
-    background-size: cover;
 }
 .grid-item.player-o:not(.o):not(.x):hover::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: var(--imgpad);
-    left: var(--imgpad);
-    right: var(--imgpad);
-    bottom: var(--imgpad);
     background-image: url('assets/o.png');
-    background-size: cover;
-    opacity: 0.25;
 }
