@@ -1,12 +1,12 @@
 body {
-    background: #bada55;
+    background: #baaba5;
     height: 100vh;
     margin:0;
     padding: 0;
 }
 
 .container {
-    background: #9999CF;
+    background: #bada55;
     width: 50%;
     min-height: 100%;
     margin: 0 auto;
@@ -38,12 +38,30 @@ body {
 .grid-item.x {
     
 }
-.grid-item.x:hover{
-    
+.grid-item.player-x:not(.o):not(.x):hover::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('assets/x.png');
+    background-size: cover;
+    opacity: 0.25;
 }
 .grid-item.o {
     
 }
-.grid-item.o:hover{
-
+.grid-item.player-o:hover::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('assets/o.png');
+    background-size: cover;
+    opacity: 0.25;
 }

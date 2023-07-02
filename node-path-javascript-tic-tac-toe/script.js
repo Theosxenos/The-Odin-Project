@@ -7,6 +7,14 @@ let uiController = (function() {
         this.currentPlayerEl = document.querySelector('#current-player');
     };
 
+    function handeTurnUi(cell, roundResult) {
+        let player = roundResult.roundResult.player;
+        cell.textContent = player;
+        cell.classList.add(player.toLowerCase());
+        renderGame();
+        
+    }
+
     let bindEvents = () => {
         [...this.cellEls].forEach((cell) => {
             cell.addEventListener('click', (event) => {
@@ -18,14 +26,27 @@ let uiController = (function() {
                 // TODO - Handle win
                 if(roundResult.hasWon) return;
                 
-                event.target.textContent = roundResult.roundResult.player;
-                renderGame();
+                handeTurnUi(event.target, roundResult);
             });
         });
     };
     
     let renderGame = () => {
         this.currentPlayerEl.textContent = turnText();
+        let cellelements = [...this.cellEls];
+        
+        // if first element doesn't have it rest doesn't either
+        let cellclasses = cellelements[0].classList; 
+
+        cellelements.forEach((cell) => {
+            let curclasslist = [...cell.classList];
+            if(curclasslist.some(classlist => classlist.includes('player'))) {
+                let i = curclasslist.findIndex(cl => cl.includes('player'));
+                cell.classList.remove(cell.classList[i]);
+            }
+            
+            cell.classList.add(`player-${gameController.getCurrentPlayer().symbol.toLowerCase()}`);
+        });
     }
     let init = () => {
         cacheDom();
