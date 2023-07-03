@@ -1,5 +1,9 @@
 let uiController = (function() {
-    let turnText = () => `${gameController.getCurrentPlayer().name}'s turn`;
+    const statusTexts = {
+        'turn': () => `${gameController.getCurrentPlayer().name}'s turn`,
+        'draw': () => 'It\'s a draw!',
+        'win': () => `${gameController.getCurrentPlayer().name} has won`
+    }
     
     let cacheDom = function() {
         this.boardEl = document.querySelector('.game-board');
@@ -8,11 +12,11 @@ let uiController = (function() {
     };
 
     function handeTurnUi(cell, roundResult) {
-        let player = roundResult.roundResult.player;
-        // cell.textContent = player;
+        let player = roundResult.roundPlayer.symbol;
+
         cell.classList.add(player.toLowerCase());
-        renderGame();
         
+        renderGame(roundResult.status);
     }
 
     let bindEvents = () => {
@@ -21,20 +25,19 @@ let uiController = (function() {
                 let cellId = event.target.attributes['data-id'].value;
                 let roundResult = gameController.playRound(cellId);
                 
-                // TODO - Error message?
-                if(roundResult.wrongMove) return;
-                // TODO - Handle win
-                if(roundResult.hasWon) return;
-                
+                // Game over
+                if(!roundResult) return;
+
                 handeTurnUi(event.target, roundResult);
             });
         });
     };
     
-    let renderGame = () => {
-        this.currentPlayerEl.textContent = turnText();
+    let renderGame = (status = 'turn') => {
+        this.currentPlayerEl.textContent = statusTexts[status]();
         let cellelements = [...this.cellEls];
 
+        // Make sure the elements have the right class representing the current player
         cellelements.forEach((cell) => {
             cell.classList.forEach((cn) => {
                 if (cn.includes('player')) {
