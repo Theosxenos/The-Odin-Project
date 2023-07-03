@@ -38,7 +38,11 @@ let gameController = (() => {
     
     let getCurrentPlayer = () => currentPlayer;
 
-    const reset = () => {
+    const startGame = (playerxname, playeryname) => {
+        playerxname = playerxname.trim();
+        playeryname = playeryname.trim();
+        players[0].name = playerxname ? playerxname : players[0].name;
+        players[1].name = playeryname ? playeryname : players[1].name;
         currentPlayer = players[0];
         gameOver = false;
         gameBoardController.initializeGameboard();
@@ -106,5 +110,5 @@ let gameController = (() => {
         return gameBoardController.getGameboard().every(c => c.player !== '');
     }
     
-    return {getCurrentPlayer, playRound, reset}
+    return {getCurrentPlayer, playRound, startGame}
 })();

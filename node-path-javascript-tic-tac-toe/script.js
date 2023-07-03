@@ -10,6 +10,10 @@ let uiController = (function() {
         this.cellEls = this.boardEl.children;
         this.currentPlayerEl = document.querySelector('#current-player');
         this.resetBtn = document.querySelector('#reset');
+        this.startBtn = document.querySelector('#start');
+        this.playersFrm = document.querySelector('#players-form');
+        this.playerxTxt = this.playersFrm.querySelector('#playerx');
+        this.playeroTxt = this.playersFrm.querySelector('#playero');
     };
 
     function handeTurnUi(cell, roundResult) {
@@ -17,8 +21,10 @@ let uiController = (function() {
 
         cell.classList.add(player.toLowerCase());
         
-        if(roundResult.status !== 'turn') removeCellEffect();
-        else setCellEffect();            
+        if(roundResult.status !== 'turn')
+            removeCellEffect();
+        else
+            setCellEffect();            
         
         setRoundText(roundResult.status);
     }
@@ -37,7 +43,12 @@ let uiController = (function() {
         });
         
         this.resetBtn.addEventListener('click', () => {
-            gameController.reset();
+            // gameController.reset();
+            resetBoard();
+        });
+        
+        this.startBtn.addEventListener('click', () => {
+            gameController.startGame(this.playerxTxt.value, this.playeroTxt.value);
             renderBoard();
         });
     };
@@ -68,18 +79,20 @@ let uiController = (function() {
         }
     }
 
-    const renderBoard= () => {
-        for(let cell of this.cellEls){
+    const resetBoard = ()=> {
+        for (let cell of this.cellEls) {
             cell.classList = ['grid-item'];
         }
-        
+    };
+
+    const renderBoard= () => {
         setRoundText();
         setCellEffect();
     }
     
     let init = () => {
         cacheDom();
-        renderBoard();
+        // renderBoard();
         bindEvents();
     };
 
