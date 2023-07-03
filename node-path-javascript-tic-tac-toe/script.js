@@ -37,7 +37,7 @@ let uiController = (function() {
                 let roundResult = gameController.playRound(cellId);
                 
                 // Game over
-                if(!roundResult) return;
+                if(!roundResult || !roundResult.status) return;
 
                 handeTurnUi(event.target, roundResult);
             });
