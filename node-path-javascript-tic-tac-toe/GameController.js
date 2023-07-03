@@ -48,6 +48,10 @@ let gameController = (() => {
         gameBoardController.initializeGameboard();
     }
     
+    const stopGame = ()=> {
+        gameOver = true;
+    }
+    
     let changeCurrentPlayer = () => {
         currentPlayer = currentPlayer === players[0] ? players[1] : players[0];
     };
@@ -56,27 +60,33 @@ let gameController = (() => {
         if (gameOver) return;
 
         let roundresult = gameBoardController.setPiece(elementid, currentPlayer.symbol);
-        let roundstatus = {status: 'turn', roundPlayer: currentPlayer};
+        let roundstatus = {status: '', roundPlayer: currentPlayer};
 
+        // if player's move was good
         if (roundresult) {
+            // If player won
             if ((gameOver = checkForWin())) {
                 roundstatus.status = 'win';
 
                 return roundstatus;
             }
 
+            // If it's a draw
             if ((gameOver = checkForDraw())) {
                 roundstatus.status = 'draw';
 
                 return roundstatus;
             }
-
+            
+            // If neither won or draw, and move was legit            
             changeCurrentPlayer();
-
+            
+            roundstatus.status = 'turn';
+            
             return roundstatus;
         }
 
-
+        // Move was not legit        
         return roundstatus;
     }
     
@@ -110,5 +120,10 @@ let gameController = (() => {
         return gameBoardController.getGameboard().every(c => c.player !== '');
     }
     
-    return {getCurrentPlayer, playRound, startGame}
+    return {
+        getCurrentPlayer,
+        playRound,
+        startGame,
+        stopGame
+    }
 })();

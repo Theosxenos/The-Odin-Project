@@ -2,7 +2,8 @@ let uiController = (function() {
     const statusTexts = {
         'turn': () => `${gameController.getCurrentPlayer().name}'s turn`,
         'draw': () => 'It\'s a draw!',
-        'win': () => `${gameController.getCurrentPlayer().name} has won`
+        'win': () => `${gameController.getCurrentPlayer().name} has won`,
+        'welcome': () => `Let's Play!`
     }
     
     let cacheDom = function() {
@@ -21,9 +22,9 @@ let uiController = (function() {
 
         cell.classList.add(player.toLowerCase());
         
-        if(roundResult.status !== 'turn')
+        if(roundResult.status && roundResult.status !== 'turn')
             removeCellEffect();
-        else
+        else if(roundResult.status)
             setCellEffect();            
         
         setRoundText(roundResult.status);
@@ -43,13 +44,18 @@ let uiController = (function() {
         });
         
         this.resetBtn.addEventListener('click', () => {
-            // gameController.reset();
+            gameController.stopGame();
             resetBoard();
+            this.resetBtn.classList.add('display-none');
+            this.playersFrm.classList.remove('display-none');
+            setRoundText('welcome');
         });
         
         this.startBtn.addEventListener('click', () => {
             gameController.startGame(this.playerxTxt.value, this.playeroTxt.value);
             renderBoard();
+            this.resetBtn.classList.remove('display-none');
+            this.playersFrm.classList.add('display-none');
         });
     };
 
