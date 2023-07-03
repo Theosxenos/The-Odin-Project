@@ -24,7 +24,10 @@ body {
 .container h1 {
     display: inline-block;
     font-size: 3.5rem;
-    font-weight: 600;
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     margin-bottom: 0;
 }
 
@@ -42,7 +45,6 @@ body {
     --imgpad: 5px;
     
     background-color: #fafafa;
-    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,6 +79,7 @@ body {
     bottom: var(--imgpad);
     background-size: cover;
     opacity: 0.25;
+    cursor: pointer;
 }
 .grid-item.player-x:not(.o):not(.x):hover::before {
     background-image: url('assets/x.png');
