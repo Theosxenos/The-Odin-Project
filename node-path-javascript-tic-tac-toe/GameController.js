@@ -34,7 +34,7 @@ let gameController = (() => {
         playerFactory('Player O', 'O')
     ];
     let currentPlayer = players[0];
-    let gameOver = false;
+    let gameOver = true;
     
     let getCurrentPlayer = () => currentPlayer;
 
