@@ -9,6 +9,7 @@ let uiController = (function() {
         this.boardEl = document.querySelector('.game-board');
         this.cellEls = this.boardEl.children;
         this.currentPlayerEl = document.querySelector('#current-player');
+        this.resetBtn = document.querySelector('#reset');
     };
 
     function handeTurnUi(cell, roundResult) {
@@ -16,7 +17,10 @@ let uiController = (function() {
 
         cell.classList.add(player.toLowerCase());
         
-        renderGame(roundResult.status);
+        if(roundResult.status !== 'turn') removeCellEffect();
+        else setCellEffect();            
+        
+        setRoundText(roundResult.status);
     }
 
     let bindEvents = () => {
@@ -31,10 +35,14 @@ let uiController = (function() {
                 handeTurnUi(event.target, roundResult);
             });
         });
+        
+        this.resetBtn.addEventListener('click', () => {
+            gameController.reset();
+            renderBoard();
+        });
     };
-    
-    let renderGame = (status = 'turn') => {
-        this.currentPlayerEl.textContent = statusTexts[status]();
+
+    function setCellEffect() {
         let cellelements = [...this.cellEls];
 
         // Make sure the elements have the right class representing the current player
@@ -48,9 +56,30 @@ let uiController = (function() {
             cell.classList.add(`player-${gameController.getCurrentPlayer().symbol.toLowerCase()}`);
         });
     }
+
+    let setRoundText = (status = 'turn') => {
+        this.currentPlayerEl.textContent = statusTexts[status]();        
+    }
+    
+    function removeCellEffect() {
+        var classname = `player-${gameController.getCurrentPlayer().symbol.toLowerCase()}`;
+        for (const item of this.cellEls) {
+            item.classList.remove(classname);
+        }
+    }
+
+    const renderBoard= () => {
+        for(let cell of this.cellEls){
+            cell.classList = ['grid-item'];
+        }
+        
+        setRoundText();
+        setCellEffect();
+    }
+    
     let init = () => {
         cacheDom();
-        renderGame();
+        renderBoard();
         bindEvents();
     };
 

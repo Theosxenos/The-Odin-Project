@@ -7,11 +7,15 @@ body {
 }
 
 .container {
-    background: #bada55;
+    background: #FFCC33;
     width: 50%;
     min-height: 100%;
     margin: 0 auto;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 .container h1 {
     display: inline-block;
@@ -22,19 +26,21 @@ body {
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
     width: 600px;
     height: 600px;
-    margin: 0 auto;
     grid-gap: 5px;
+    border-radius: 5px;
     background: #000;
+    border: 2px solid black;
 }
 .grid-item {
     --imgpad: 5px;
     
-    background-color: white;
+    background-color: #fafafa;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    border-radius: 5px;
 }
 .grid-item.x::before, .grid-item.o::before {
     content: '';
@@ -70,4 +76,17 @@ body {
 }
 .grid-item.player-o:not(.o):not(.x):hover::before {
     background-image: url('assets/o.png');
+}
+
+button#reset {
+    height: 50px;
+    width: 600px;
+    background: #D51C1F;
+    border-radius: 5px;
+    font-size: 2rem;
+    font-weight: bolder;
+    cursor: pointer;
+}
+button#reset:hover {
+    background: rgba(213, 28, 31, 0.75);
 }
