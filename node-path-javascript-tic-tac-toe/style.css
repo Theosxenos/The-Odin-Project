@@ -95,6 +95,9 @@ body {
     justify-items: center;
     gap: 5px;
 }
+#players-form input {
+    border-radius: 5px;
+}
 #players-form label, #players-form input {
     font-size: 2rem;
 }
@@ -102,12 +105,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 5px;
-}
-#players-form > .left {
-
-}
-#players-form > .right {
-
 }
 
 button#reset, button#start {
