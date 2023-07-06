@@ -1,63 +1,71 @@
-let mylibrary = [];
+const libraryModule = (() => {
+    const mylibrary = [];
 
-let bookcontainer;
-let form;
+    function addFakeData() {
+        const hobbit = new Book('The Hobbit', 'JRR Tolkien', 123, false);
+        addBookToLibrary(hobbit);
 
+        setTimeout(() =>{
+            const lotr = new Book('The LotR', 'JRR Tolkien', 321, true);
+            addBookToLibrary(lotr);
+        }, 1);
+    }
 
-function initialize() {
-    bookcontainer = document.querySelector('.bookcontainer');
-    form = document.querySelector('form');
-    // form.addEventListener('submit', submitForm);
+    function init() {
+        cacheDom();
+        bindEvents();
+        addFakeData();
+    }
 
-    var hobbit = new Book('The Hobbit', 'JRR Tolkien', 123, false);
-    mylibrary.push(hobbit);
+    function cacheDom() {
+        this.bookcontainer = document.querySelector('.bookcontainer');
+        this.form = document.querySelector('form');
+    }
+
+    function bindEvents() {
+        this.form.addEventListener('submit', submitForm);
+    }
     
-    setTimeout(() => {
-        mylibrary.push(new Book('The LotR', 'JRR Tolkien', 321, true));
-        showAllBooks();
-    },1);
+    function addBookToLibrary(book) {
+        mylibrary.push(book);
+        let bookelement = createBookElement(book);
+        this.bookcontainer.appendChild(bookelement.content.firstChild);
+    }
 
-
-}
-
-function addBookToLibrary(book) {
-    mylibrary.push(book);
-}
-
-function showAllBooks() {
-    bookcontainer.innerHTML = '';
-    mylibrary.forEach(book => {
-        // console.log(book.template);
-        var bookelement = document.createElement('template');
+    function createBookElement(book) {
+        const bookelement = document.createElement('template');
         bookelement.innerHTML = book.template().trim();
-        // console.log('element', bookelement);
-        bookelement.content.firstChild.id = book.id;
-        bookcontainer.appendChild(bookelement.content.firstChild);
-        console.log(book.info());
-    });
-}
+        bookelement.content.firstChild.dataset.bookId = book.id;
+        const deletebutton = bookelement.content.querySelector('button');
+        deletebutton.addEventListener('click', (e) => {
+            removeBookFromLibraryById(book.id);
+        });
+        
+        return bookelement;
+    }
 
-function submitForm(e) {
-    console.log('form submitted', e);
-    var name = e.target.elements.name.value; // of e.target.elements['name'].value
-    var author = e.target.elements.author.value;
-    var pages = e.target.elements.pages.value;
-    var read = e.target.elements.read.checked;
+    function submitForm(e) {
+        e.preventDefault();
 
-    var book = new Book(name, author, pages, read);
-    
-    addBookToLibrary(book);
-    showAllBooks();
+        const { name, author, pages, read } = e.target.elements;
+        const book = new Book(name.value, author.value, pages.value, read.checked);
 
-    e.preventDefault();
-    e.srcElement.reset();
-}
+        addBookToLibrary(book);
 
-function removeThisBook(id) {
-    var bookindex = mylibrary.findIndex(b => b.id == id);
-    mylibrary.splice(bookindex, 1);
+        e.target.reset();
+    }
 
-    showAllBooks();
-}
+    function removeBookFromLibraryById(id) {
+        const bookindex = mylibrary.findIndex(b => b.id === id);
+        mylibrary.splice(bookindex, 1);
+        
+        const bookelement = this.bookcontainer.querySelector(`[data-book-id="${id}"]`);
+        this.bookcontainer.removeChild(bookelement);
+    }
 
-initialize();
+    return {
+        init
+    }
+})();
+
+libraryModule.init();
