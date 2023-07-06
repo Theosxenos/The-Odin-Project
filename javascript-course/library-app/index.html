@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Library App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="book.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>My Book Library</h1>
+    </header>
+    <main>
+        <div class="leftcolumn">
+            <form action="" onsubmit="submitForm(event)">
+                <label for="name">Name</label>
+                <input type="text" name="" id="name">
+        
+                <label for="author">Author</label>
+                <input type="text" name="" id="author">
+        
+                <label for="pages">Pages</label>
+                <input type="text" name="" id="pages">
+        
+                <label for="read">Read</label>
+                <input type="checkbox" name="" id="read">
+        
+                <div class="btn-group">
+                    <button type="submit">Submit</button>
+                    <button type="reset">Reset</button>
+                </div>
+            </form>
+            <div class="messagelog">
+
+            </div>
+        </div>
+        <div class="bookcontainer"></div>
+    </main>
+</body>
+</html>
