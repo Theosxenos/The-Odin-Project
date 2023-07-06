@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe - The Odin Project Tutorial</title>
+    <script src="PlayerFactory.js" defer></script>
+    <script src="CellFactory.js" defer></script>
+    <script src="GameController.js" defer></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="game-title">Tic-Tac-Toe</h1>
+        <h2 id="current-player">Let's Play!</h2>
+        <div class="game-board">
+            <div class="grid-item" data-id="0"></div>
+            <div class="grid-item" data-id="1"></div>
+            <div class="grid-item" data-id="2"></div>
+            <div class="grid-item" data-id="3"></div>
+            <div class="grid-item" data-id="4"></div>
+            <div class="grid-item" data-id="5"></div>
+            <div class="grid-item" data-id="6"></div>
+            <div class="grid-item" data-id="7"></div>
+            <div class="grid-item" data-id="8"></div>
+        </div>
+        <div >
+            <form id="players-form">
+                <div class="left">
+                    <label for="playerx">Name for Player X:</label>
+                    <input id="playerx" type="text" />
+                </div>
+                <div class="right">
+                    <label for="playero">Name for Player O:</label>
+                    <input id="playero" type="text" />
+                </div>
+                <button id="start" type="button">Start</button>                
+            </form>
+        </div>
+        <div>
+            <button id="reset" class="display-none" type="button">Reset</button>
+        </div>
+    </div>
+</body>
+</html>

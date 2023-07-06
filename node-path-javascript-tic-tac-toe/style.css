@@ -1,0 +1,134 @@
+.display-none {
+    display: none !important;
+}
+
+body {
+    background: #baaba5;
+    height: 100vh;
+    margin:0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.container {
+    background: #FFCC33;
+    width: 50%;
+    min-height: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.container h1 {
+    display: inline-block;
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0;
+}
+
+.game-board {
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    width: 600px;
+    height: 600px;
+    grid-gap: 5px;
+    border-radius: 5px;
+    background: #000;
+    border: 2px solid black;
+}
+.grid-item {
+    --imgpad: 5px;
+    
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 5px;
+}
+.grid-item.x::before, .grid-item.o::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: var(--imgpad);
+    left: var(--imgpad);
+    right: var(--imgpad);
+    bottom: var(--imgpad);
+}
+.grid-item.x::before {
+    background-image: url('assets/x.png');
+    background-size: cover;
+}
+.grid-item.o::before {
+    background-image: url('assets/o.png');
+    background-size: cover;
+}
+
+.grid-item.player-x:not(.o):not(.x):hover::before, .grid-item.player-o:not(.o):not(.x):hover::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: var(--imgpad);
+    left: var(--imgpad);
+    right: var(--imgpad);
+    bottom: var(--imgpad);
+    background-size: cover;
+    opacity: 0.25;
+    cursor: pointer;
+}
+.grid-item.player-x:not(.o):not(.x):hover::before {
+    background-image: url('assets/x.png');
+}
+.grid-item.player-o:not(.o):not(.x):hover::before {
+    background-image: url('assets/o.png');
+}
+
+#players-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: row;
+    justify-items: center;
+    gap: 5px;
+}
+#players-form input {
+    border-radius: 5px;
+}
+#players-form label, #players-form input {
+    font-size: 2rem;
+}
+#players-form > .left, #players-form > .right {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+button#reset, button#start {
+    height: 50px;
+    width: 600px;
+    border-radius: 5px;
+    font-size: 2rem;
+    font-weight: bolder;
+    cursor: pointer;
+    color: white;
+}
+
+button#start {
+    background: #1F7922;
+    grid-column: span 2;
+    margin-top: 15px;
+}
+button#start:hover {
+    background: #2D8F39;
+}
+
+button#reset {
+    background: #D51C1F;
+}
+button#reset:hover {
+    background: rgba(213, 28, 31, 0.75);
+}
