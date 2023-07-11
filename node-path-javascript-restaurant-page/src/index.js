@@ -2,10 +2,12 @@ import createHeader from "./header.component";
 import createHomeComponent from "./home.component";
 
 (() =>{
+    let contentEl;
+    let headerEl;
     
     function cacheDom() {
-        this.contentEl = document.querySelector('#content');
-        this.headerEl = document.querySelector('header');
+        contentEl = document.querySelector('#content');
+        headerEl = document.querySelector('header');
     }
     
     const init = () => {
@@ -16,11 +18,11 @@ import createHomeComponent from "./home.component";
     };
     
     const setEventHandlers = () => {
-        console.log(this.headerEl);
+        console.log(headerEl);
     }
     
     function clearPageContent() {
-        this.contentEl.innerHTML = '';
+        contentEl.innerHTML = '';
     }
     
     init();
