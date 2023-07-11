@@ -12,7 +12,7 @@ import createHomeComponent from "./home.component";
     
     const init = () => {
         createHeader();
-        createHomeComponent()
+        createHomeComponent();
         cacheDom();
         setEventHandlers();
     };
