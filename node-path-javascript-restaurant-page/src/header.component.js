@@ -21,6 +21,6 @@ function createMenu() {
 }
 
 export default function createHeader() {
-    const contentEl = document.querySelector('#content');;
+    const contentEl = document.querySelector('#content');
     contentEl.appendChild(createMenu());
 }
