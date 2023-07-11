@@ -1,6 +1,8 @@
+import {createElement} from "./helpers";
+
 function createMenu() {
-    const headerEl = document.createElement('header');
-    const ulEl = document.createElement('ul');
+    const headerEl = createElement({tag:'header'});
+    const ulEl = createElement({tag:'ul', parent: headerEl});
     
     const tabs = [
         "Home",
@@ -8,14 +10,10 @@ function createMenu() {
         "About"
     ];
 
-    tabs.forEach((tab) =>{
-       const liEl = document.createElement('li');
-       liEl.innerText = tab;
-       
-        ulEl.appendChild(liEl);
+    tabs.forEach((tab) => {
+        const liEl = createElement({tag: 'li', parent: ulEl});
+        createElement({tag: 'a', parent: liEl, innerHTML: tab})
     });
-    
-    headerEl.appendChild(ulEl);
     
     return  headerEl;
 }
