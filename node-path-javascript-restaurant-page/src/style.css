@@ -1,6 +1,9 @@
 body {
     display: grid;
     grid-template-rows: auto 1fr;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 header {
     grid-row: 1;
@@ -26,4 +29,5 @@ header li.active {
 #content {
     width: 800px;
     justify-self: center;
+    background: aqua;
 }

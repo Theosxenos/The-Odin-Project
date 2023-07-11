@@ -39,6 +39,8 @@ import createAboutComponent from "./about.compontent";
                       createAboutComponent();
                       break;
               }
+              
+              switchActiveTab(event.target);
            }); 
         });
     }
@@ -47,6 +49,14 @@ import createAboutComponent from "./about.compontent";
         contentEl.innerHTML = '';
     }
     
+    function switchActiveTab(newactivetab) {
+        let oldactivetab = document.querySelector('header li.active');
+        
+        if(newactivetab === oldactivetab) return;
+        
+        oldactivetab.classList.remove('active');
+        newactivetab.parentNode.classList.add('active');
+    }
     
     
     init();
