@@ -10,15 +10,15 @@ function createMenu() {
         "About"
     ];
 
-    tabs.forEach((tab) => {
-        const liEl = createElement({tag: 'li', parent: ulEl});
-        createElement({tag: 'a', parent: liEl, innerHTML: tab})
+    tabs.forEach((tab, index) => {
+        const liEl = createElement({tag: 'li', parent: ulEl, classes: index===0?'active':''});
+        createElement({tag: 'a', parent: liEl, innerHTML: tab, classes: tab.toLowerCase()})
     });
     
     return  headerEl;
 }
 
 export default function createHeader() {
-    const contentEl = document.querySelector('#content');
-    contentEl.appendChild(createMenu());
+    const bodyEl = document.querySelector('body');
+    bodyEl.appendChild(createMenu());
 }

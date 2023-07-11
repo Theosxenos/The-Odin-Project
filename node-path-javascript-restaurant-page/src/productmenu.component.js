@@ -11,8 +11,10 @@ const menu = [
     menuItemFactory('Vceli Uli', 2.33),
 ]
 
-export default function createMenuComponent() {
+export default function createProductMenuComponent() {
     const contentEl = document.querySelector('#content');
+    
+    createElement({tag: 'h1', innerHTML: 'Our Menu', parent: contentEl});
     
     const tableEl = createElement({tag: 'table', parent: contentEl});
     const theadEl = createElement({tag: 'thead', parent: tableEl});

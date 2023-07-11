@@ -1,0 +1,29 @@
+body {
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+header {
+    grid-row: 1;
+}
+
+header ul {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    width: 300px;
+    margin: 0 auto;
+    list-style-type: none;
+    font-size: 2rem;
+}
+
+header li {
+    background: #E5E9F0;
+}
+header li.active {
+    background: #D8DEE9;
+}
+
+#content {
+    width: 800px;
+    justify-self: center;
+}
