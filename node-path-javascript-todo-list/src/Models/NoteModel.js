@@ -6,13 +6,13 @@ export default class NoteModel {
     id = uuIdv4();
     todoItems = [];
     
-    addTodoItem(todoItem) {
+    addTodoItem = (todoItem) => {
         if(todoItem === '') return;
         
         this.todoItems.push(todoItem);
     }
     
-    removeTodoItem(todoItem) {
+    removeTodoItem = (todoItem) => {
         if(todoItem === '') return;
         let itemIndex = this.todoItems.indexOf(todoItem);
         this.todoItems.splice(itemIndex, 1);

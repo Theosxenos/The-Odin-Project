@@ -1,7 +1,7 @@
 import TodoItem from "../Models/TodoItemModel";
 import NoteModel from "../Models/NoteModel";
 
-export default class MainViewModel {
+export default class MainController {
     notes = [];
     currentNote;
     
@@ -26,7 +26,7 @@ export default class MainViewModel {
         // TODO - if(result.length === 1)
     }
 
-    #notifyPropertyChanged(propertyName) {
+    #notifyPropertyChanged = (propertyName) => {
         this.pubSub.publish({propertyName});
     }
 }
