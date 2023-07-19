@@ -1,4 +1,4 @@
-import NoteModel from "../Models/NoteModel";
+import NoteItemModel from "../Models/NoteItemModel";
 
 export default class MainView {
     constructor(viewmodel, pubSub) {
@@ -8,11 +8,11 @@ export default class MainView {
         
         this.init();
         
-        this.viewmodel.addNewNote(new NoteModel());
+        this.viewmodel.addNewNote(new NoteItemModel());
         
         this.button = document.querySelector('button');
         this.button.addEventListener('click', () => {
-           this.viewmodel.addNewNote(new NoteModel());
+           this.viewmodel.addNewNote(new NoteItemModel());
         });
         this.#subscribePropertyChanged(this.onPropertyChanged);
     }
