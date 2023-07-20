@@ -1,44 +1,34 @@
 import NoteItemModel from "../Models/NoteItemModel";
 
 export default class MainView {
-    constructor(viewmodel, pubSub) {
-        this.viewmodel = viewmodel;
-        this.pubSub = pubSub;
-        
-        
-        this.init();
-        
-        this.viewmodel.addNewNote(new NoteItemModel());
-        
-        this.button = document.querySelector('button');
-        this.button.addEventListener('click', () => {
-           this.viewmodel.addNewNote(new NoteItemModel());
-        });
-        this.#subscribePropertyChanged(this.onPropertyChanged);
+    constructor() {
+        this.cacheDom();
+        this.addEventHandlers();
+    }
+    
+    cacheDom = () => {  
+        this.newNoteForm = document.querySelector('#new-note-form');
+        this.newNoteTitle = this.newNoteForm.querySelector('#new-note-tile');
+    }
+    
+    addEventHandlers = () => {
+        this.newNoteForm.addEventListener('submit', this.onFormSubmit);
     }
 
-    init = () => {
-        this.viewmodel.notes.forEach((note) => {
-           console.log(note); 
-        });
-    }
-    
-    onPropertyChanged = (payload) => {
-        // TODO
-        switch (payload.propertyName) {
-            case 'todoItems':
-                console.log()
-                break;
-            case 'notes':
-                this.init();
-                break;
-            default:
-                break;
-        }
+    onFormSubmit = (event) => {
+        event.preventDefault();
+        
+        let newNoteTitle = event.target[0].value;
+        this.createNewNote(newNoteTitle);
     };
     
-    #subscribePropertyChanged(callbackFunction) {
-        // this.pubSub.subscribe((payload) => callbackFunction.call(this, payload));
-        this.pubSub.subscribe(callbackFunction);
+    bindCreateNewNote = (callback) => {
+      this.createNewNote = callback;  
+    };
+    
+    displayAllNotes = (notes) => {
+        notes.forEach((note) => {
+           console.log(note); 
+        });
     }
 }

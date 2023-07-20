@@ -6,6 +6,10 @@ export default class NoteItemModel {
     id = uuIdv4();
     todoItems = [];
     
+    constructor(noteTitle) {
+        this.noteTitle = noteTitle;
+    }
+    
     addTodoItem = (todoItem) => {
         if(todoItem === '') return;
         
